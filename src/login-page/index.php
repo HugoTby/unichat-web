@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" oncontextmenu="return false;">
+<html lang="en" oncontextmenu="return true;">
 
 <head>
     <meta charset="UTF-8">
@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&family=Exo:wght@100;200&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/info.css' rel='stylesheet'>
 </head>
 <style>
     /* Pour les erreurs d'adresses IP*/
@@ -31,6 +32,9 @@
 
     <div class="center">
         <?php
+        include("../bdd/database.php");
+        include("form.php");
+        $erreur = 0; // Mettre la variable $erreur a 1 quand le mdp ou le nom d'utilisateur est incorrect
 
         // On include les fichiers codes.php, black_list.php, white_list.php pour récupérer par la suite le nom et le drapeau du pays d'origine de l'adresse IP et l'autorisation d'accès si elle existe
         include("../ip-adresses/codes.php");
@@ -62,9 +66,23 @@
                 <div id="div-logo">
                     <img id="logo-unichat" src="lapro-white-logo.png" alt="UniChat Logo">
                 </div>
-                <input type="text" placeholder="Nom d'utilisateur">
-                <input type="password" placeholder="Mot de passe">
+                <input type="text" placeholder="Nom d'utilisateur (ex: nom.prenom)">
+                <input type="password" placeholder="Mot de passe (ex: KUmiX57!)">
                 <button>Se connecter</button>
+                <?php
+
+                if ($erreur === 1) {
+                    // Message d'erreur si le mdp ou login incorrets
+                    echo "
+                        <div style='display:flex; align-items:center; justify-content:center;padding-top:20px;'>
+                            <i class='gg-info' style='margin-right:5px; color:#fff;background-color:red'></i>
+                            <span style='color:#fff;background-color:red;border-radius:4px;padding:5px;font-size:12px'>
+                                Le nom d'utilisateur ou le mot de passe est incorrect
+                            </span>
+                        </div>
+                        ";
+                }
+                ?>
             </form>
         <?php
         } else {
