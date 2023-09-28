@@ -1,5 +1,5 @@
 <html>
 <?php
-header('Location: login-page/index.html');
+header('Location: login-page/index.php');
 exit;
 ?>
