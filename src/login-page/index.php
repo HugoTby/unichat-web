@@ -32,14 +32,63 @@
 
     <div class="center">
         <?php
+        session_start();
+        $erreur = 0;
+        
         include("../bdd/database.php");
-        include("form.php");
-        $erreur = 0; // Mettre la variable $erreur a 1 quand le mdp ou le nom d'utilisateur est incorrect
 
         // On include les fichiers codes.php, black_list.php, white_list.php pour récupérer par la suite le nom et le drapeau du pays d'origine de l'adresse IP et l'autorisation d'accès si elle existe
         include("../ip-adresses/codes.php");
         include("../ip-adresses/black_list.php");
         include("../ip-adresses/white_list.php");
+
+        if (isset($_POST["btnConnecting"])) // Si le bouton 'se connecter' est pressé
+        {
+            if ($GLOBALS["pdo"]) // Si la connexion à la bdd est réussi
+            {
+                // Récupération des données du formulaire
+
+                $username = $_POST["username"];
+                $password = hash('sha256', $_POST["password"]);
+
+                // Préparation requête
+                $select = "SELECT username, passwd FROM utilisateurs WHERE username='$username'";
+                $selectResult = $GLOBALS["pdo"]->query($select);
+
+                if ($selectResult) // Si la requête est réussie
+                {
+                    $row_count = $selectResult->rowCount();
+
+                    if ($row_count > 0) {
+                        $tabUser = $selectResult->fetchALL();
+
+                        foreach ($tabUser as $user) // On va parcourir le tableau d'utilisateur
+                        {
+                            if ($username == $user['username'] &&  $password == $user['passwd']) // Si un user avec le même mdp à était trouvé alors on le connecte
+                            {
+                                // On va ainsi prendre le pseudo pour la session
+                                $_SESSION["Username"] = $user['username']; // Tableau de session Login = login de l'utilsateur
+                                $_SESSION["IsConnected"] = true;
+
+                                $erreur = 0;
+                            } else if ($password != $user['passwd']) // Si le mot de passe est  différent
+                            {
+                                $erreur = 1;
+                            }
+                        }
+                    } else if ($row_count == 0) // Si aucun utilisateur ne correspond
+                    {
+                        $erreur = 1;
+                    }
+                } else // Si la requête n'est pas réussie
+                {
+                    $erreur = 1;
+                }
+            } else // Si la connexion à la bdd n'est pas réussie
+            {
+                $erreur = 1;
+            }
+        }
 
         // On utilise la fonction `file_get_contents` pour obtenir les informations géographiques à partir de l'adresse IP ( avec -> ipinfo.io )
         $ip = $_SERVER['REMOTE_ADDR'];
@@ -61,14 +110,19 @@
         elseif (property_exists($info, 'country') && $info->country === "FR" or ($ip == in_array($ip, $whitelist) || strpos($ip, '192.168.') === 0)) {
 
             // On autorise l'accès au site
+            if (isset($_SESSION["IsConnected"]) && $_SESSION["IsConnected"] == true) // Si l'utilisateur est connecté
+            {
+                header('Location: ../main/index.php'); // Redirection page principale
+            } else // Sinon il y'a une erreur et on indique $erreur a 1 pour l'afficher
+            {
         ?>
-            <form class="login" method="post">
-                <div id="div-logo">
-                    <img id="logo-unichat" src="lapro-white-logo.png" alt="UniChat Logo">
-                </div>
-                <input type="text" placeholder="Nom d'utilisateur (ex: nom.prenom)">
-                <input type="password" placeholder="Mot de passe (ex: KUmiX57!)">
-                <button>Se connecter</button>
+                <form class="login" method="post">
+                    <div id="div-logo">
+                        <img id="logo-unichat" src="lapro-white-logo.png" alt="UniChat Logo">
+                    </div>
+                    <input name="username" type="text" maxlength="50" placeholder="Nom d'utilisateur (ex: nom.prenom)" required>
+                    <input name="password" type="password" maxlength="30" placeholder="Mot de passe (ex: KUmiX57!)" required>
+                    <button name="btnConnecting" type="submit">Se connecter</button>
                 <?php
 
                 if ($erreur === 1) {
@@ -82,9 +136,9 @@
                         </div>
                         ";
                 }
-                ?>
-            </form>
-        <?php
+            } ?>
+                </form>
+            <?php
         } else {
 
             // Sinon, on refuse l'accès en affichant l'adresse IP de l'utilisateur, aisni que le nom et le drapeau de son pays récupérés dans le tableau du fichier codes.php
@@ -96,7 +150,7 @@
                 </div>";
         }
 
-        ?>
+            ?>
 
     </div>
 </body>
