@@ -82,11 +82,11 @@
                     }
                 } else // Si la requête n'est pas réussie
                 {
-                    $erreur = 1;
+                    $erreur = 2;
                 }
             } else // Si la connexion à la bdd n'est pas réussie
             {
-                $erreur = 1;
+                $erreur = 2;
             }
         }
 
@@ -132,6 +132,17 @@
                             <i class='gg-info' style='margin-right:5px; color:#fff;background-color:red'></i>
                             <span style='color:#fff;background-color:red;border-radius:4px;padding:5px;font-size:12px'>
                                 Le nom d'utilisateur ou le mot de passe est incorrect
+                            </span>
+                        </div>
+                        ";
+                }
+                else if ($erreur === 2) {
+                    // Message d'erreur si le mdp ou login incorrets
+                    echo "
+                        <div style='display:flex; align-items:center; justify-content:center;padding-top:20px;'>
+                            <i class='gg-info' style='margin-right:5px; color:#fff;background-color:red'></i>
+                            <span style='color:#fff;background-color:red;border-radius:4px;padding:5px;font-size:12px'>
+                                Code erreur 409 (SQL REQUEST FAILED)
                             </span>
                         </div>
                         ";
