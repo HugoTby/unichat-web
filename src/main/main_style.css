@@ -1,0 +1,19 @@
+body {
+    background-color: #a69cad;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    /* Utiliser flexbox */
+}
+
+.left {
+    width: 70%;
+    background-color: #9c65c4;
+}
+
+.right {
+    width: 30%;
+    background-color: #8f0feb;
+}
