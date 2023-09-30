@@ -6,15 +6,30 @@ body {
 
 .container {
     display: flex;
-    /* Utiliser flexbox */
+    /* padding-top: 50px; */
 }
 
 .left {
     width: 70%;
-    background-color: #9c65c4;
+    background-color: #a69cad;
+    position: relative;
+    /* Ajoutez une position relative pour utiliser position:absolute */
+}
+
+video {
+    width: 100%;
+    /* La vidéo prend toute la largeur de la div parente */
+    height: 100%;
+    /* La vidéo prend toute la hauteur de la div parente */
 }
 
 .right {
     width: 30%;
-    background-color: #8f0feb;
+    background-color: #6b686d;
+}
+
+#topbar {
+    width: 100%;
+    height: 50px;
+    background-color: rgb(60, 63, 63)
 }

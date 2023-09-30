@@ -14,40 +14,43 @@
 </head>
 
 <body>
+    <div id="topbar">
+        <?php
+        session_start();
 
-    <?php
-    session_start();
+        if (isset($_SESSION["IsConnected"]) && $_SESSION["IsConnected"] == true) {
+        ?>
+            <form action="" method="post">
+                <li class="nav-item">
+                    <button type='submit' name='Deconnexion' class="btn btn-primary">Se déconnecter</button>
+                </li>
+            </form>
+        <?php
 
-    if (isset($_SESSION["IsConnected"]) && $_SESSION["IsConnected"] == true) {
-    ?>
-        <form action="" method="post">
-            <li class="nav-item">
-                <button type='submit' name='Deconnexion' class="btn btn-primary">Se déconnecter</button>
-            </li>
-        </form>
-    <?php
-
-        if (isset($_POST["Deconnexion"])) // Sinon si l'utilisateur appuis sur le bouton de déconnexion
-        {
-            session_unset(); // On supprime tout les tableaux de la session
-            session_destroy(); // On détruit la session
-            header("Location: ../login-page/index.php");
+            if (isset($_POST["Deconnexion"])) // Sinon si l'utilisateur appuis sur le bouton de déconnexion
+            {
+                session_unset(); // On supprime tout les tableaux de la session
+                session_destroy(); // On détruit la session
+                header("Location: ../login-page/index.php");
+            }
         }
-    }
-    ?>
+        ?>
 
+        Top - Menu section
 
-
+    </div>
 
     <div class="container">
         <div class="left">
-            Left
+            <video autoplay muted>
+                <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                Votre navigateur ne prend pas en charge la lecture de vidéos.
+            </video>
         </div>
         <div class="right">
-            Right
+            Right - LiveChat section
         </div>
     </div>
-
 
 
 
