@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&family=Exo:wght@100;200&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/info.css' rel='stylesheet'>
-    <link rel="shortcut icon" href="lapro-ico.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/lapro-ico.png" type="image/x-icon">
 </head>
 <style>
     /* Pour les erreurs d'adresses IP*/
@@ -119,7 +119,7 @@
         ?>
                 <form class="login" method="post">
                     <div id="div-logo">
-                        <img id="logo-unichat" src="lapro-white-logo.png" alt="UniChat Logo">
+                        <img id="logo-unichat" src="../images/lapro-white-logo.png" alt="UniChat Logo">
                     </div>
                     <input name="username" type="text" maxlength="50" placeholder="Nom d'utilisateur (ex: nom.prenom)" required>
                     <input name="password" type="password" maxlength="30" placeholder="Mot de passe (ex: KUmiX57!)" required>
