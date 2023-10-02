@@ -48,7 +48,27 @@
             </video>
         </div>
         <div class="right">
-            Right - LiveChat section
+            Right - LiveChat section<br>/*Reste a dev jquery et ajax pour la gestion du rechargement dynamique des div. Voir projet de l'an dernier sur GitHub pour le code.*/
+            <pre><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+function scrollToBottom() {
+    var messagesContainer = document.getElementById("messages");
+    $(messagesContainer).animate({
+        scrollTop: messagesContainer.scrollHeight
+    }, 1000);
+}
+
+// Faire défiler jusqu'en bas au chargement de la page
+$(window).on("load", function() {
+    scrollToBottom();
+});
+
+setInterval(load_messages, 1000);
+
+function load_messages() {
+    $('#messages').load('messages.php');
+    scrollToBottom();
+}
+            </pre>
         </div>
     </div>
 

@@ -1,8 +1,12 @@
 body {
     background-color: #a69cad;
+    margin: 0;
     /* font-family: "Asap", sans-serif;
     font-family: 'Exo', sans-serif; */
     font-family: 'Exo 2', sans-serif;
+    background-image: url("https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?cs=srgb&dl=pexels-luis-gomes-546819.jpg&fm=jpg");
+    background-size: cover;
+    backdrop-filter: blur(3px);
 }
 
 .login {
@@ -22,7 +26,12 @@ body {
     -webkit-transition: -webkit-transform 300ms, box-shadow 300ms;
     -moz-transition: -moz-transform 300ms, box-shadow 300ms;
     transition: transform 300ms, box-shadow 300ms;
-    box-shadow: 5px 10px 10px rgba(2, 128, 144, 0.2);
+    /* box-shadow: 5px 10px 10px rgba(2, 128, 144, 0.2); */
+    backdrop-filter: blur(8px) saturate(180%);
+    -webkit-backdrop-filter: blur(8px) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
 .login::before,
