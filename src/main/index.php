@@ -18,19 +18,24 @@
         <?php
         session_start();
 
+        // Check if the user is connected
         if (isset($_SESSION["IsConnected"]) && $_SESSION["IsConnected"] == true) {
         ?>
+            <!-- Display a form for user logout -->
             <form action="" method="post">
                 <li class="nav-item">
+                    <!-- Button for user logout -->
                     <button type='submit' name='Deconnexion' class="btn btn-primary">Se déconnecter</button>
                 </li>
             </form>
         <?php
 
-            if (isset($_POST["Deconnexion"])) // Sinon si l'utilisateur appuis sur le bouton de déconnexion
-            {
-                session_unset(); // On supprime tout les tableaux de la session
-                session_destroy(); // On détruit la session
+            // Check if the user clicked the logout button
+            if (isset($_POST["Deconnexion"])) {
+                // Unset and destroy the session
+                session_unset();
+                session_destroy();
+                // Redirect to the login page
                 header("Location: ../login-page/index.php");
             }
         }
@@ -39,14 +44,16 @@
         Top - Menu section
 
     </div>
-
+    <!-- Main content container -->
     <div class="container">
+        <!-- Left side with a video -->
         <div class="left">
             <video autoplay muted>
                 <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
                 Votre navigateur ne prend pas en charge la lecture de vidéos.
             </video>
         </div>
+        <!-- Right side with LiveChat section -->
         <div class="right">
             Right - LiveChat section<br>/*Reste a dev jquery et ajax pour la gestion du rechargement dynamique des div. Voir projet de l'an dernier sur GitHub pour le code.*/
             <pre><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
