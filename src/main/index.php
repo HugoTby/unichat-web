@@ -48,10 +48,11 @@
     <div class="container">
         <!-- Left side with a video -->
         <div class="left">
-            <video autoplay muted>
+            <!-- <video autoplay muted>
                 <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
                 Votre navigateur ne prend pas en charge la lecture de vidéos.
-            </video>
+            </video> -->
+            <iframe src="https://1stream.buzz/fr/2/1" webkitallowfullscreen="true" mozallowfullscreen="true" allow="autoplay" allowfullscreen="true" scrolling="no" frameborder="0" allowtransparency="true" width="1150" height="600"></iframe>
         </div>
         <!-- Right side with LiveChat section -->
         <div class="right">
