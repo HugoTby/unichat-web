@@ -28,6 +28,48 @@
                     <button type='submit' name='Deconnexion' class="btn btn-primary">Se déconnecter</button>
                 </li>
             </form>
+
+
+            Top - Menu section
+
+</div>
+<!-- Main content container -->
+<div class="container">
+    <!-- Left side with a video -->
+    <div class="left">
+        <!-- <video autoplay muted>
+            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+            Votre navigateur ne prend pas en charge la lecture de vidéos.
+        </video> -->
+        <iframe src="https://1stream.buzz/fr/2/1" webkitallowfullscreen="true" mozallowfullscreen="true" allow="autoplay" allowfullscreen="true" scrolling="no" frameborder="0" allowtransparency="true" width="1150" height="600"></iframe>
+    </div>
+    <!-- Right side with LiveChat section -->
+    <div class="right">
+        Right - LiveChat section<br>/*Reste a dev jquery et ajax pour la gestion du rechargement dynamique des div. Voir projet de l'an dernier sur GitHub pour le code.*/
+        <pre><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+function scrollToBottom() {
+var messagesContainer = document.getElementById("messages");
+$(messagesContainer).animate({
+    scrollTop: messagesContainer.scrollHeight
+}, 1000);
+}
+
+// Faire défiler jusqu'en bas au chargement de la page
+$(window).on("load", function() {
+scrollToBottom();
+});
+
+setInterval(load_messages, 1000);
+
+function load_messages() {
+$('#messages').load('messages.php');
+scrollToBottom();
+}
+        </pre>
+    </div>
+</div>
+
+
         <?php
 
             // Check if the user clicked the logout button
@@ -38,48 +80,13 @@
                 // Redirect to the login page
                 header("Location: ../login-page/index.php");
             }
+        } else {
+            session_unset();
+            session_destroy();
+            // Redirect to the login page
+            header("Location: ../login-page/index.php");
         }
         ?>
-
-        Top - Menu section
-
-    </div>
-    <!-- Main content container -->
-    <div class="container">
-        <!-- Left side with a video -->
-        <div class="left">
-            <!-- <video autoplay muted>
-                <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
-                Votre navigateur ne prend pas en charge la lecture de vidéos.
-            </video> -->
-            <iframe src="https://1stream.buzz/fr/2/1" webkitallowfullscreen="true" mozallowfullscreen="true" allow="autoplay" allowfullscreen="true" scrolling="no" frameborder="0" allowtransparency="true" width="1150" height="600"></iframe>
-        </div>
-        <!-- Right side with LiveChat section -->
-        <div class="right">
-            Right - LiveChat section<br>/*Reste a dev jquery et ajax pour la gestion du rechargement dynamique des div. Voir projet de l'an dernier sur GitHub pour le code.*/
-            <pre><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-function scrollToBottom() {
-    var messagesContainer = document.getElementById("messages");
-    $(messagesContainer).animate({
-        scrollTop: messagesContainer.scrollHeight
-    }, 1000);
-}
-
-// Faire défiler jusqu'en bas au chargement de la page
-$(window).on("load", function() {
-    scrollToBottom();
-});
-
-setInterval(load_messages, 1000);
-
-function load_messages() {
-    $('#messages').load('messages.php');
-    scrollToBottom();
-}
-            </pre>
-        </div>
-    </div>
-
 
 
 
