@@ -12,19 +12,36 @@
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/info.css' rel='stylesheet'>
     <link rel="shortcut icon" href="../images/lapro-ico.png" type="image/x-icon">
 </head>
+<style>
+    /* Pour les erreurs d'adresses IP*/
+    .center {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .error {
+        background: rgba(255, 0, 0, 0.4);
+        padding: 10px;
+        border-radius: 5px;
+        color: #fff;
+    }
+</style>
 
 <body>
+    <div class="center">
+        <?php
 
-    <?php
+        include("../bdd/database.php");
 
-    include("../bdd/database.php");
+        // & On include les fichiers codes.php, black_list.php, white_list.php pour récupérer par la suite le nom et le drapeau du pays d'origine de l'adresse IP et l'autorisation d'accès si elle existe
+        include("../ip-adresses/codes.php");
+        include("../ip-adresses/black_list.php");
+        include("../ip-adresses/white_list.php");
 
-    // & On include les fichiers codes.php, black_list.php, white_list.php pour récupérer par la suite le nom et le drapeau du pays d'origine de l'adresse IP et l'autorisation d'accès si elle existe
-    include("../ip-adresses/codes.php");
-    include("../ip-adresses/black_list.php");
-    include("../ip-adresses/white_list.php");
 
-    if (isset($_SESSION["IsConnected"]) && $_SESSION["IsConnected"] == true) {
 
         // & On utilise la fonction `file_get_contents` pour obtenir les informations géographiques à partir de l'adresse IP ( avec -> ipinfo.io )
         $ip = $_SERVER['REMOTE_ADDR'];
@@ -52,7 +69,7 @@
             } else // & Sinon il y'a une erreur et on indique $erreur a 1 pour l'afficher
             {
 
-    ?>
+        ?>
                 <form class="login" method="post">
                     <div id="div-logo">
                         <img id="logo-unichat" src="../images/lapro-white-logo.png" alt="UniChat Logo">
@@ -62,7 +79,7 @@
                     <input name="re-password" type="password" maxlength="30" placeholder="Confirmer le mot de passe" required>
                     <button name="btnConnecting" type="submit">Continuer</button>
                 </form>
-    <?php
+        <?php
             }
         } else {
 
@@ -73,14 +90,8 @@
                     Désolé, seule une adresse IP provenant de<strong> France 🇫🇷</strong> est autorisée à se connecter à UniChat pour le Web<br><br>
                     Votre adresse IP est : <strong>" . $ip . "</strong>, elle provient de <strong>" . $country . "</strong>
                 </div>";
-        }
-    } else {
-        session_unset();
-        session_destroy();
-        // Redirect to the login page
-        header("Location: ../login-page/index.php");
-    }
-    ?>
+        }    ?>
+    </div>
 </body>
 <script>
     // & Blocage de l'inspecteur d'élément(s)
