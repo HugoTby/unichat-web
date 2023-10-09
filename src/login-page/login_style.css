@@ -4,14 +4,20 @@ body {
     /* font-family: "Asap", sans-serif;
     font-family: 'Exo', sans-serif; */
     font-family: 'Exo 2', sans-serif;
-    background-image: url("https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?cs=srgb&dl=pexels-luis-gomes-546819.jpg&fm=jpg");
+    /* background-image: url("https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?cs=srgb&dl=pexels-luis-gomes-546819.jpg&fm=jpg"); */
     background-size: cover;
-    backdrop-filter: blur(3px);
+    /* backdrop-filter: blur(3px); */
+
+    background-color: #50E3C2;
+    background-image:
+        radial-gradient(at 47% 33%, hsl(299.64, 85%, 39%) 0, transparent 59%),
+        radial-gradient(at 82% 65%, hsl(295.42, 71%, 67%) 0, transparent 55%);
+
 }
 
 .login {
     overflow: hidden;
-    background-color: #ad77cf;
+    /* background-color: #ad77cf; */
     padding: 40px 30px 30px 30px;
     border-radius: 10px;
     position: absolute;
@@ -23,18 +29,23 @@ body {
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    -webkit-transition: -webkit-transform 300ms, box-shadow 300ms;
+    /* -webkit-transition: -webkit-transform 300ms, box-shadow 300ms;
     -moz-transition: -moz-transform 300ms, box-shadow 300ms;
     transition: transform 300ms, box-shadow 300ms;
-    /* box-shadow: 5px 10px 10px rgba(2, 128, 144, 0.2); */
+    box-shadow: 5px 10px 10px rgba(2, 128, 144, 0.2); 
     backdrop-filter: blur(0px) saturate(180%);
     -webkit-backdrop-filter: blur(8px) saturate(180%);
     background-color: rgba(17, 25, 40, 0.75);
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.125);
+    border: 1px solid rgba(255, 255, 255, 0.125); */
+    backdrop-filter: blur(2px) saturate(62%);
+    -webkit-backdrop-filter: blur(2px) saturate(62%);
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
 }
 
-.login::before,
+/*.login::before,
 .login::after {
     content: "";
     position: absolute;
@@ -63,7 +74,7 @@ body {
     -webkit-animation: wawes 7s infinite;
     -moz-animation: wawes 7s infinite;
     animation: wawes 7s infinite;
-}
+}*/
 
 .login>input {
     /* font-family: "Asap", sans-serif; */
@@ -80,7 +91,8 @@ body {
 .login>button {
     /* font-family: "Asap", sans-serif; */
     cursor: pointer;
-    color: #7b73f2;
+    /* color: #7b73f2; */
+    color: #000000;
     font-size: 16px;
     /* text-transform: uppercase; */
     width: 150px;
