@@ -4,14 +4,14 @@ body {
     /* font-family: "Asap", sans-serif;
     font-family: 'Exo', sans-serif; */
     font-family: 'Exo 2', sans-serif;
-    /* background-image: url("https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?cs=srgb&dl=pexels-luis-gomes-546819.jpg&fm=jpg"); */
+    background-image: url("https://img.freepik.com/premium-photo/abstract-gradient-background-background-design_509471-40.jpg");
     background-size: cover;
     /* backdrop-filter: blur(3px); */
 
     background-color: #50E3C2;
-    background-image:
-        radial-gradient(at 47% 33%, hsl(299.64, 85%, 39%) 0, transparent 59%),
-        radial-gradient(at 82% 65%, hsl(295.42, 71%, 67%) 0, transparent 55%);
+    /* background-image:
+        radial-gradient(at 47% 33%, hsl(300, 32%, 48%) 0, transparent 59%),
+        radial-gradient(at 82% 65%, hsl(295.42, 71%, 67%) 0, transparent 55%); */
 
 }
 

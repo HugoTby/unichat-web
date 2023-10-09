@@ -36,7 +36,7 @@
         <?php
         session_start();
         $erreur = 0;
-        
+
         include("../bdd/database.php");
 
         // & On include les fichiers codes.php, black_list.php, white_list.php pour récupérer par la suite le nom et le drapeau du pays d'origine de l'adresse IP et l'autorisation d'accès si elle existe
@@ -137,8 +137,7 @@
                             </span>
                         </div>
                         ";
-                }
-                else if ($erreur === 2) {
+                } else if ($erreur === 2) {
                     // & Message d'erreur si le mdp ou login incorrets
                     echo "
                         <div style='display:flex; align-items:center; justify-content:center;padding-top:20px;'>
