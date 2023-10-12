@@ -74,7 +74,6 @@
                                 $_SESSION["IsConnected"] = true;
 
                                 $erreur = 0;
-                                
                             } else if ($password != $user['passwd']) // & Si le mot de passe est  différent
                             {
                                 $erreur = 1;
@@ -118,13 +117,11 @@
             {
 
                 if (hash('sha256', $_SESSION["Username"]) == $_SESSION["Password"]) {
-                    header('Location: first-login.php');
+                    header('Location: first-login.php'); // ! fonctionnalité a revoir
                 } else {
                     header('Location: ../main/index.php'); // & Redirection page principale
                     echo $_SESSION["Password"];
                 }
-
-                
             } else // & Sinon il y'a une erreur et on indique $erreur a 1 pour l'afficher
             {
         ?>

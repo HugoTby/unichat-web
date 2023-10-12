@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" oncontextmenu="return true;">
+<html lang="en" oncontextmenu="return false;">
 
 <head>
     <meta charset="UTF-8">
@@ -33,7 +33,6 @@
 <body>
     <div class="center">
         <?php
-
         include("../bdd/database.php");
 
         // & On include les fichiers codes.php, black_list.php, white_list.php pour récupérer par la suite le nom et le drapeau du pays d'origine de l'adresse IP et l'autorisation d'accès si elle existe
@@ -41,13 +40,13 @@
         include("../ip-adresses/black_list.php");
         include("../ip-adresses/white_list.php");
 
-        if (isset($_POST["Deconnexion"])) {
+        /*if (isset($_POST["Deconnexion"])) {
             // Unset and destroy the session
-            session_unset();
-            session_destroy();
+            /*session_unset();
+            session_destroy();*/
             // Redirect to the login page
-            header("Location: http://192.168.65.143");
-        }
+            /*header("Location: index.php");*/
+        //}
 
         // & On utilise la fonction `file_get_contents` pour obtenir les informations géographiques à partir de l'adresse IP ( avec -> ipinfo.io )
         $ip = $_SERVER['REMOTE_ADDR'];
@@ -86,9 +85,9 @@
                     <input name="re-password" type="password" maxlength="30" placeholder="Confirmer le mot de passe" required>
                     <button name="btnConnecting" type="submit">Continuer</button>
                 </form>
-                <form method="post" style=" position: fixed;bottom: 10px; left: 15px; ">
+                <!--<form method="post" style=" position: fixed;bottom: 10px; left: 15px; ">
                     <button type="submit" name="Deconnexion">Retour</button>
-                </form>
+                </form>-->
 
         <?php
             }
