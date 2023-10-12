@@ -111,6 +111,29 @@ body {
     background-color: #d3cccc;
 }
 
+button {
+    /* font-family: "Asap", sans-serif; */
+    cursor: pointer;
+    /* color: #7b73f2; */
+    color: #666666;
+    font-size: 16px;
+    /* text-transform: uppercase; */
+    width: 150px;
+    border: 0;
+    padding: 10px 0;
+    margin-top: 10px;
+    margin-left: -5px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    -webkit-transition: background-color 300ms;
+    -moz-transition: background-color 300ms;
+    transition: background-color 300ms;
+}
+
+button:hover {
+    background-color: #d3cccc;
+}
+
 @-webkit-keyframes wawes {
     from {
         -webkit-transform: rotate(0);

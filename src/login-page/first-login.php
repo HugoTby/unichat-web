@@ -41,7 +41,13 @@
         include("../ip-adresses/black_list.php");
         include("../ip-adresses/white_list.php");
 
-
+        if (isset($_POST["Deconnexion"])) {
+            // Unset and destroy the session
+            session_unset();
+            session_destroy();
+            // Redirect to the login page
+            header("Location: http://192.168.65.143");
+        }
 
         // & On utilise la fonction `file_get_contents` pour obtenir les informations géographiques à partir de l'adresse IP ( avec -> ipinfo.io )
         $ip = $_SERVER['REMOTE_ADDR'];
@@ -74,11 +80,16 @@
                     <div id="div-logo">
                         <img id="logo-unichat" src="../images/lapro-white-logo.png" alt="UniChat Logo">
                     </div>
+                    <h1 style="color: #fff; font-size:16px;">Première connexion, veuillez modifier<br>votre mot de passe pour continuer.</h1>
                     <input style="cursor: not-allowed;" name="username" type="text" maxlength="50" value="prenom.nom" readonly>
                     <input name="password" type="password" maxlength="50" placeholder="Mot de passe" required>
                     <input name="re-password" type="password" maxlength="30" placeholder="Confirmer le mot de passe" required>
                     <button name="btnConnecting" type="submit">Continuer</button>
                 </form>
+                <form method="post" style=" position: fixed;bottom: 10px; left: 15px; ">
+                    <button type="submit" name="Deconnexion">Déconnexion</button>
+                </form>
+
         <?php
             }
         } else {

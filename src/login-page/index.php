@@ -70,9 +70,11 @@
                             {
                                 // & On va ainsi prendre le pseudo pour la session
                                 $_SESSION["Username"] = $user['username']; // & Tableau de session Login = login de l'utilsateur
+                                $_SESSION["Password"] = $user['passwd'];
                                 $_SESSION["IsConnected"] = true;
 
                                 $erreur = 0;
+                                
                             } else if ($password != $user['passwd']) // & Si le mot de passe est  différent
                             {
                                 $erreur = 1;
@@ -114,7 +116,15 @@
             // & On autorise l'accès au site
             if (isset($_SESSION["IsConnected"]) && $_SESSION["IsConnected"] == true) // & Si l'utilisateur est connecté
             {
-                header('Location: ../main/index.php'); // & Redirection page principale
+
+                if (hash('sha256', $_SESSION["Username"]) == $_SESSION["Password"]) {
+                    header('Location: first-login.php');
+                } else {
+                    header('Location: ../main/index.php'); // & Redirection page principale
+                    echo $_SESSION["Password"];
+                }
+
+                
             } else // & Sinon il y'a une erreur et on indique $erreur a 1 pour l'afficher
             {
         ?>
