@@ -87,7 +87,7 @@
                     <button name="btnConnecting" type="submit">Continuer</button>
                 </form>
                 <form method="post" style=" position: fixed;bottom: 10px; left: 15px; ">
-                    <button type="submit" name="Deconnexion">Déconnexion</button>
+                    <button type="submit" name="Deconnexion">Retour</button>
                 </form>
 
         <?php
