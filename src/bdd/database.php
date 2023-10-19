@@ -1,5 +1,5 @@
 <?php
-    try {
+    /*try {
         $ipserver = "127.0.0.1";
         $nomBase = "unichat";
         $loginPrivilege = "root";
@@ -11,5 +11,13 @@
     {
         $error->getMessage();
         echo "Erreur BDD : " .$error;
-    }
+    }*/
+
+
+    $host =                "127.0.0.1";      // Adresse IP //
+    $username =            "root";        // Username   //
+    $password =            "root";           // Password   //
+    $dbname =              "unichat";           // Nom base   //
+
+    $conn = mysqli_connect($host, $username, $password, $dbname);
 ?>

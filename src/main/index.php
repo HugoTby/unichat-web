@@ -32,21 +32,21 @@
 
             Top - Menu section
 
-</div>
-<!-- Main content container -->
-<div class="container">
-    <!-- Left side with a video -->
-    <div class="left">
-        <!-- <video autoplay muted>
+    </div>
+    <!-- Main content container -->
+    <div class="container">
+        <!-- Left side with a video -->
+        <div class="left">
+            <!-- <video autoplay muted>
             <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
             Votre navigateur ne prend pas en charge la lecture de vidéos.
         </video> -->
-        <iframe src="https://1stream.buzz/fr/2/1" webkitallowfullscreen="true" mozallowfullscreen="true" allow="autoplay" allowfullscreen="true" scrolling="no" frameborder="0" allowtransparency="true" width="1150" height="600"></iframe>
-    </div>
-    <!-- Right side with LiveChat section -->
-    <div class="right">
-        Right - LiveChat section<br>/*Reste a dev jquery et ajax pour la gestion du rechargement dynamique des div. Voir projet de l'an dernier sur GitHub pour le code.*/
-        <pre><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+            <iframe src="https://1stream.buzz/fr/2/1" webkitallowfullscreen="true" mozallowfullscreen="true" allow="autoplay" allowfullscreen="true" scrolling="no" frameborder="0" allowtransparency="true" width="1150" height="600"></iframe>
+        </div>
+        <!-- Right side with LiveChat section -->
+        <div class="right">
+            Right - LiveChat section<br>/*Reste a dev jquery et ajax pour la gestion du rechargement dynamique des div. Voir projet de l'an dernier sur GitHub pour le code.*/
+            <pre><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 function scrollToBottom() {
 var messagesContainer = document.getElementById("messages");
 $(messagesContainer).animate({
@@ -66,11 +66,11 @@ $('#messages').load('messages.php');
 scrollToBottom();
 }
         </pre>
+        </div>
     </div>
-</div>
 
 
-        <?php
+<?php
 
             // Check if the user clicked the logout button
             if (isset($_POST["Deconnexion"])) {
@@ -86,7 +86,7 @@ scrollToBottom();
             // Redirect to the login page
             header("Location: ../login-page/index.php");
         }
-        ?>
+?>
 
 
 
