@@ -45,11 +45,11 @@
         //}
 
 
-            // & On autorise l'accès au site
-            if ($_SESSION["ConnexionInformations"] === 1) // & Si l'utilisateur est connecté
+            
+            if ($_SESSION["ConnexionInformations"] === 1 || $_SESSION["IsConnected"] = false) // Si l'utilisateur s'est déjà connecté au moins 1 fois
             {
-                header('Location: ../main/index.php'); // & Redirection page principale
-            } else // & Sinon il y'a une erreur et on indique $erreur a 1 pour l'afficher
+                header('Location: ../main/index.php'); // Redirection page principale
+            } else // Sinon on affiche le formulaire de changement de mot de passe
             {
 
         ?>

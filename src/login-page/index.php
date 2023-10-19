@@ -29,7 +29,6 @@
         color: #fff;
     }
 </style>
-
 <body>
     <div class="center">
 

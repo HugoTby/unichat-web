@@ -15,7 +15,7 @@ function formulaire($erreur)
         </div>
         <input name="username" type="text" maxlength="50" placeholder="Nom d'utilisateur (ex: prenom.nom)" required>
         <input name="password" type="password" maxlength="30" placeholder="Mot de passe (ex: KUmiX57!)" required>
-        <button name="btnConnecting" type="submit">Se connecter</button>
+        <button name="btnConnecting" type="submit">Se connecter</button><h1 id="mdpo"><a target="_blank" href="../support/contact.php" >Mot de passe oublié?</a></h1>
         <?php
 
         if ($erreur === 1) {
