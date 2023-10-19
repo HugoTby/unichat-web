@@ -80,13 +80,24 @@
 
                 // Si un utilisateur est trouvé avec les informations de connexion données
                 if (mysqli_num_rows($result) > 0) {
-                    $_SESSION["Username"];
-                    $_SESSION["Password"];
-                    $_SESSION["IsConnected"] = true;
 
-                    header('Location: ../main/index.php');
-                    //echo "test";
-                    exit(); // Terminer le script après la redirection
+                    $isAlreadyConnected = $row['isAlreadyConnected'];
+
+                    if ($isAlreadyConnected === 0) {
+                        //echo "0";
+                        $_SESSION["Username"] = $username;
+                        $_SESSION["ConnexionInformations"] = $isAlreadyConnected;
+                        header('Location: first-login.php');
+                        exit(); // Terminer le script après la redirection*/
+                    } else {
+                        //echo "1";
+                        $_SESSION["Username"];
+                        $_SESSION["Password"];
+                        $_SESSION["ConnexionInformations"] = 1;
+                        $_SESSION["IsConnected"] = true;
+                        header('Location: ../main/index.php');
+                        exit(); // Terminer le script après la redirection*/
+                    }
                 } else {
                     // Affichage d'un message d'erreur si les informations de connexion sont incorrectes
                     formulaire($erreur = 1);

@@ -34,11 +34,7 @@
     <div class="center">
         <?php
         include("../bdd/database.php");
-
-        // & On include les fichiers codes.php, black_list.php, white_list.php pour récupérer par la suite le nom et le drapeau du pays d'origine de l'adresse IP et l'autorisation d'accès si elle existe
-        include("../ip-adresses/codes.php");
-        include("../ip-adresses/black_list.php");
-        include("../ip-adresses/white_list.php");
+        session_start();
 
         /*if (isset($_POST["Deconnexion"])) {
             // Unset and destroy the session
@@ -48,27 +44,9 @@
             /*header("Location: index.php");*/
         //}
 
-        // & On utilise la fonction `file_get_contents` pour obtenir les informations géographiques à partir de l'adresse IP ( avec -> ipinfo.io )
-        $ip = $_SERVER['REMOTE_ADDR'];
-        $info = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
-
-        // & On vérifie si l'ip correspond a une adresse bloquée dans la liste donnée dans le tableau `blacklist` présent dans le fichier 'black_list.php'
-        if (array_key_exists($ip, $blacklist)) {
-            $ip_adress_list = $blacklist[$ip];
-            echo "
-            <div class='error'>
-                Désolé, le serveur à renvoyé l'erreur <strong>**Accès refusé**</strong> à UniChat pour le Web<br><br>
-                Votre adresse IP est : <strong>" . $ip . "</strong>, elle correspond à <strong><mark style='border-radius:2px;padding:2px'>" . $ip_adress_list . "</mark></strong><br><br>
-                Si cette erreur apparaît, il est probable que votre adresse IP ait été mise sur liste noire par les développeurs de ce site, ou qu'elle soit incompatible avec l'utilisation du site.<br><br>
-                Pour corriger cette erreur, veuillez contacter un administrateur de site ou votre administrateur de réseau.
-            </div>";
-        }
-
-        // & On vérifie si la propriété 'country' existe et si oui, si le pays de l'utilisateur est la France ( code = FR ) ou si il est dans la liste des IP autorisées.
-        elseif (property_exists($info, 'country') && $info->country === "FR" or ($ip == in_array($ip, $whitelist) || strpos($ip, '192.168.') === 0)) {
 
             // & On autorise l'accès au site
-            if (isset($_SESSION["IsConnected"]) && $_SESSION["IsConnected"] == true) // & Si l'utilisateur est connecté
+            if ($_SESSION["ConnexionInformations"] === 1) // & Si l'utilisateur est connecté
             {
                 header('Location: ../main/index.php'); // & Redirection page principale
             } else // & Sinon il y'a une erreur et on indique $erreur a 1 pour l'afficher
@@ -80,9 +58,9 @@
                         <img id="logo-unichat" src="../images/lapro-white-logo.png" alt="UniChat Logo">
                     </div>
                     <h1 style="color: #fff; font-size:16px;">Première connexion, veuillez modifier<br>votre mot de passe pour continuer.</h1>
-                    <input style="cursor: not-allowed;" name="username" type="text" maxlength="50" value="prenom.nom" readonly>
-                    <input name="password" type="password" maxlength="50" placeholder="Mot de passe" required>
-                    <input name="re-password" type="password" maxlength="30" placeholder="Confirmer le mot de passe" required>
+                    <input style="cursor: not-allowed;" name="username" type="text" maxlength="50" value="<?php echo $_SESSION["Username"]; ?>" readonly>
+                    <input name="password" type="password" maxlength="50" placeholder="Nouveau mot de passe" required autocomplete="off">
+                    <input name="re-password" type="password" maxlength="30" placeholder="Confirmer le nouveau mot de passe" required autocomplete="off">
                     <button name="btnConnecting" type="submit">Continuer</button>
                 </form>
                 <!--<form method="post" style=" position: fixed;bottom: 10px; left: 15px; ">
@@ -91,16 +69,7 @@
 
         <?php
             }
-        } else {
-
-            // & Sinon, on refuse l'accès en affichant l'adresse IP de l'utilisateur, aisni que le nom et le drapeau de son pays récupérés dans le tableau du fichier codes.php
-            $country = property_exists($info, 'country') ? (array_key_exists($info->country, $countryCodes) ? $countryCodes[$info->country] : 'Unknown location') : 'Unknown location';
-            echo "
-                <div class='error'>
-                    Désolé, seule une adresse IP provenant de<strong> France 🇫🇷</strong> est autorisée à se connecter à UniChat pour le Web<br><br>
-                    Votre adresse IP est : <strong>" . $ip . "</strong>, elle provient de <strong>" . $country . "</strong>
-                </div>";
-        }    ?>
+          ?>
     </div>
 </body>
 <script>

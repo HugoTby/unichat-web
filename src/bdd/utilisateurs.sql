@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 29 sep. 2023 à 08:50
--- Version du serveur : 8.0.31
--- Version de PHP : 8.0.26
+-- Généré le : jeu. 19 oct. 2023 à 20:36
+-- Version du serveur : 8.0.27
+-- Version de PHP : 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `passwd` varchar(1000) NOT NULL,
   `classe` int NOT NULL,
   `isAdmin` tinyint(1) NOT NULL DEFAULT '0',
+  `isAlreadyConnected` int NOT NULL DEFAULT '0',
   `badge` varchar(3000) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -42,9 +43,9 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
 -- Déchargement des données de la table `utilisateurs`
 --
 
-INSERT INTO `utilisateurs` (`id`, `username`, `passwd`, `classe`, `isAdmin`, `badge`) VALUES
-(1, 'prenom.nom', '', 1, 0, NULL),
-(2, 'root', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 2, 0, NULL);
+INSERT INTO `utilisateurs` (`id`, `username`, `passwd`, `classe`, `isAdmin`, `isAlreadyConnected`, `badge`) VALUES
+(1, 'root', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 1, 0, 0, NULL),
+(2, 'root2', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2', 0, 0, 1, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
