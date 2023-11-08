@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&family=Exo:wght@100;200&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/info.css' rel='stylesheet'>
     <link rel="shortcut icon" href="../images/lapro-ico.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 
 <body>
@@ -41,10 +42,27 @@
             <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
             Votre navigateur ne prend pas en charge la lecture de vidéos.
         </video> -->
-            <iframe src="https://1stream.buzz/fr/2/1" webkitallowfullscreen="true" mozallowfullscreen="true" allow="autoplay" allowfullscreen="true" scrolling="no" frameborder="0" allowtransparency="true" width="1150" height="600"></iframe>
+        <div class="embed-responsive embed-responsive-16by9">
+		   <video id="video" class="embed-responsive-item video-js vjs-default-skin" controls muted="muted"></video>
+		 </div>
+		</div>
+        
+
+		<script>
+			if(Hls.isSupported()) {
+				var video = document.getElementById('video');
+				var hls = new Hls();
+				hls.loadSource('http://192.168.64.233:8080/hls/test.m3u8');
+				hls.attachMedia(video);
+				hls.on(Hls.Events.MANIFEST_PARSED,function() {
+				  video.play();
+				});
+			}
+		</script>
+            <!-- <iframe src="https://1stream.buzz/fr/2/1" webkitallowfullscreen="true" mozallowfullscreen="true" allow="autoplay" allowfullscreen="true" scrolling="no" frameborder="0" allowtransparency="true" width="1150" height="600"></iframe> -->
         </div>
         <!-- Right side with LiveChat section -->
-        <div class="right">
+        <!-- <div class="right">
             Right - LiveChat section<br>/*Reste a dev jquery et ajax pour la gestion du rechargement dynamique des div. Voir projet de l'an dernier sur GitHub pour le code.*/
             <pre><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 function scrollToBottom() {
@@ -66,7 +84,7 @@ $('#messages').load('messages.php');
 scrollToBottom();
 }
         </pre>
-        </div>
+        </div> -->
     </div>
 
 
